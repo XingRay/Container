@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Container.iml" filepath="$PROJECT_DIR$/Container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.xingray.container.container.iml" filepath="$PROJECT_DIR$/.idea/modules/com.xingray.container.container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.xingray.container.container.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.xingray.container.container.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.xingray.container.container.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.xingray.container.container.test.iml" />
+    </modules>
+  </component>
+</project>
