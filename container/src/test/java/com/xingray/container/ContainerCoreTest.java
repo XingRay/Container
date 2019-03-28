@@ -1,5 +1,6 @@
 package com.xingray.container;
 
+import com.xingray.container.helper.ContainerCore;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
