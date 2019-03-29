@@ -1,65 +1,86 @@
 package com.xingray.container;
 
-import com.xingray.container.operators.CloneFactory;
-import com.xingray.container.operators.Mapper;
-import com.xingray.container.operators.Processor;
-import com.xingray.container.operators.Tester;
+import com.xingray.container.helper.ContainerCore;
+import com.xingray.container.helper.Converter;
+import com.xingray.container.operators.generic.CloneFactory;
+import com.xingray.container.operators.generic.Mapper;
+import com.xingray.container.operators.generic.Processor;
+import com.xingray.container.operators.generic.Tester;
+import com.xingray.container.operators.primary.mapper.IntBooleanMapper;
+import com.xingray.container.operators.primary.mapper.IntGenericMapper;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class IntContainer extends Container {
-    public IntContainer(Object container, int containerType) {
+
+    IntContainer(Object container, int containerType) {
         super(container, containerType);
     }
 
     @Override
     public Object[] asArray() {
-        return new Object[0];
+        return Converter.convertGeneric(getArray(), new Object[getSize()], new IntGenericMapper<Object>(){
+            @Override
+            public Object map(int value) {
+                return value;
+            }
+        });
     }
 
     @Override
-    public Object[] asBooleanArray() {
-        return new Object[0];
+    public boolean[] asBooleanArray() {
+        return ContainerCore.convert(getArray(), new IntBooleanMapper(){
+            @Override
+            public boolean map(int value) {
+                return false;
+            }
+        });
     }
 
     @Override
-    public Object[] asByteArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public Object[] asShortArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public Object[] asIntArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public Object[] asLongArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public Object[] asFloatArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public Object[] asDoubleArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public ArrayList asList() {
+    public byte[] asByteArray() {
         return null;
     }
 
     @Override
-    public Map asMap() {
+    public short[] asShortArray() {
+        return null;
+    }
+
+    @Override
+    public int[] asIntArray() {
+        return getArray();
+    }
+
+    @Override
+    public long[] asLongArray() {
+        return null;
+    }
+
+    @Override
+    public float[] asFloatArray() {
+        return null;
+    }
+
+    @Override
+    public double[] asDoubleArray() {
+        return null;
+    }
+
+    @Override
+    public ArrayList asList() {
+        return ContainerCore.toList(getArray());
+    }
+
+    @Override
+    public HashMap asMap() {
+        return null;
+    }
+
+    @Override
+    public HashSet asSet() {
         return null;
     }
 
@@ -186,5 +207,12 @@ public class IntContainer extends Container {
     @Override
     public Container swap(int x, int y) {
         return null;
+    }
+
+    private int[] getArray() {
+        if (mContainerType != ContainerType.ARRAY) {
+            throw new IllegalStateException();
+        }
+        return (int[]) mContainer;
     }
 }

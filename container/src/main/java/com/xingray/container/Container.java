@@ -1,9 +1,9 @@
 package com.xingray.container;
 
-import com.xingray.container.operators.CloneFactory;
-import com.xingray.container.operators.Mapper;
-import com.xingray.container.operators.Processor;
-import com.xingray.container.operators.Tester;
+import com.xingray.container.operators.generic.CloneFactory;
+import com.xingray.container.operators.generic.Mapper;
+import com.xingray.container.operators.generic.Processor;
+import com.xingray.container.operators.generic.Tester;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,12 +21,12 @@ import java.util.Map;
  */
 public abstract class Container<T> {
 
-    private Object container;
-    private int containerType;
+    Object mContainer;
+    int mContainerType;
 
     protected Container(Object container, int containerType) {
-        this.container = container;
-        this.containerType = containerType;
+        mContainer = container;
+        mContainerType = containerType;
     }
 
     static <T> Container<T> ofArray(T[] array) {

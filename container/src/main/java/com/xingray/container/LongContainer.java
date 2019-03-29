@@ -1,12 +1,13 @@
 package com.xingray.container;
 
-import com.xingray.container.operators.CloneFactory;
-import com.xingray.container.operators.Mapper;
-import com.xingray.container.operators.Processor;
-import com.xingray.container.operators.Tester;
+import com.xingray.container.operators.generic.CloneFactory;
+import com.xingray.container.operators.generic.Mapper;
+import com.xingray.container.operators.generic.Processor;
+import com.xingray.container.operators.generic.Tester;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class LongContainer extends Container {
     public LongContainer(Object container, int containerType) {
@@ -19,38 +20,38 @@ public class LongContainer extends Container {
     }
 
     @Override
-    public Object[] asBooleanArray() {
-        return new Object[0];
+    public boolean[] asBooleanArray() {
+        return new boolean[0];
     }
 
     @Override
-    public Object[] asByteArray() {
-        return new Object[0];
+    public byte[] asByteArray() {
+        return new byte[0];
     }
 
     @Override
-    public Object[] asShortArray() {
-        return new Object[0];
+    public short[] asShortArray() {
+        return new short[0];
     }
 
     @Override
-    public Object[] asIntArray() {
-        return new Object[0];
+    public int[] asIntArray() {
+        return new int[0];
     }
 
     @Override
-    public Object[] asLongArray() {
-        return new Object[0];
+    public long[] asLongArray() {
+        return new long[0];
     }
 
     @Override
-    public Object[] asFloatArray() {
-        return new Object[0];
+    public float[] asFloatArray() {
+        return new float[0];
     }
 
     @Override
-    public Object[] asDoubleArray() {
-        return new Object[0];
+    public double[] asDoubleArray() {
+        return new double[0];
     }
 
     @Override
@@ -59,7 +60,12 @@ public class LongContainer extends Container {
     }
 
     @Override
-    public Map asMap() {
+    public HashMap asMap() {
+        return null;
+    }
+
+    @Override
+    public HashSet asSet() {
         return null;
     }
 

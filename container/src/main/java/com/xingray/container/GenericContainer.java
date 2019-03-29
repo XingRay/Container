@@ -1,12 +1,13 @@
 package com.xingray.container;
 
-import com.xingray.container.operators.CloneFactory;
-import com.xingray.container.operators.Mapper;
-import com.xingray.container.operators.Processor;
-import com.xingray.container.operators.Tester;
+import com.xingray.container.operators.generic.CloneFactory;
+import com.xingray.container.operators.generic.Mapper;
+import com.xingray.container.operators.generic.Processor;
+import com.xingray.container.operators.generic.Tester;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class GenericContainer<T> extends Container<T> {
 
@@ -20,38 +21,38 @@ public class GenericContainer<T> extends Container<T> {
     }
 
     @Override
-    public T[] asBooleanArray() {
-        return null;
+    public boolean[] asBooleanArray() {
+        return new boolean[0];
     }
 
     @Override
-    public T[] asByteArray() {
-        return null;
+    public byte[] asByteArray() {
+        return new byte[0];
     }
 
     @Override
-    public T[] asShortArray() {
-        return null;
+    public short[] asShortArray() {
+        return new short[0];
     }
 
     @Override
-    public T[] asIntArray() {
-        return null;
+    public int[] asIntArray() {
+        return new int[0];
     }
 
     @Override
-    public T[] asLongArray() {
-        return null;
+    public long[] asLongArray() {
+        return new long[0];
     }
 
     @Override
-    public T[] asFloatArray() {
-        return null;
+    public float[] asFloatArray() {
+        return new float[0];
     }
 
     @Override
-    public T[] asDoubleArray() {
-        return null;
+    public double[] asDoubleArray() {
+        return new double[0];
     }
 
     @Override
@@ -60,7 +61,12 @@ public class GenericContainer<T> extends Container<T> {
     }
 
     @Override
-    public <K> Map<K, T> asMap() {
+    public <K> HashMap<K, T> asMap() {
+        return null;
+    }
+
+    @Override
+    public HashSet<T> asSet() {
         return null;
     }
 

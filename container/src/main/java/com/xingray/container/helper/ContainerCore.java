@@ -1,19 +1,11 @@
 package com.xingray.container.helper;
 
 
-import com.xingray.container.operators.*;
+import com.xingray.container.operators.generic.*;
+import com.xingray.container.operators.primary.mapper.*;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.RandomAccess;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author : leixing
@@ -58,6 +50,10 @@ public class ContainerCore {
     }
 
     public static boolean isEmpty(char[] array) {
+        return array == null || array.length == 0;
+    }
+
+    public static boolean isEmpty(short[] array) {
         return array == null || array.length == 0;
     }
 
@@ -2044,7 +2040,7 @@ public class ContainerCore {
         return list;
     }
 
-    public static <T> Range getSizeRange(T[][] arrays) {
+    public static <T> int[] getSizeRange(T[][] arrays) {
         boolean initialized = false;
         int min = 0;
         int max = 0;
@@ -2066,15 +2062,15 @@ public class ContainerCore {
             throw new IllegalStateException("no array found");
         }
 
-        return new Range(min, max);
+        return new int[]{min, max};
     }
 
     public static <T> int getMinSize(T[][] arrays) {
-        return getSizeRange(arrays).getMin();
+        return getSizeRange(arrays)[0];
     }
 
     public static <T> int getMaxSize(T[][] arrays) {
-        return getSizeRange(arrays).getMax();
+        return getSizeRange(arrays)[1];
     }
 
     public static <T> T findCommonElement(T[][] arrays) {
@@ -2245,6 +2241,1047 @@ public class ContainerCore {
         }
     }
 
+    public static <T> boolean[] convert(T[] array, GenericBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> byte[] convert(T[] array, GenericByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> char[] convert(T[] array, GenericCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> short[] convert(T[] array, GenericShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> int[] convert(T[] array, GenericIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> long[] convert(T[] array, GenericLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> float[] convert(T[] array, GenericFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> double[] convert(T[] array, GenericDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> T[] convert(boolean[] array, BooleanGenericMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        T[] result = new T[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static boolean[] convert(boolean[] array, BooleanBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static byte[] convert(boolean[] array, BooleanByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static char[] convert(boolean[] array, BooleanCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static short[] convert(boolean[] array, BooleanShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static int[] convert(boolean[] array, BooleanIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static long[] convert(boolean[] array, BooleanLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static float[] convert(boolean[] array, BooleanFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static double[] convert(boolean[] array, BooleanDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> T[] convert(byte[] array, ByteGenericMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        T[] result = new T[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static boolean[] convert(byte[] array, ByteBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static byte[] convert(byte[] array, ByteByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static char[] convert(byte[] array, ByteCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static short[] convert(byte[] array, ByteShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static int[] convert(byte[] array, ByteIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static long[] convert(byte[] array, ByteLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static float[] convert(byte[] array, ByteFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static double[] convert(byte[] array, ByteDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> T[] convert(char[] array, CharGenericMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        T[] result = new T[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static boolean[] convert(char[] array, CharBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static byte[] convert(char[] array, CharByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static char[] convert(char[] array, CharCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static short[] convert(char[] array, CharShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static int[] convert(char[] array, CharIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static long[] convert(char[] array, CharLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static float[] convert(char[] array, CharFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static double[] convert(char[] array, CharDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> T[] convert(short[] array, ShortGenericMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        T[] result = new T[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static boolean[] convert(short[] array, ShortBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static byte[] convert(short[] array, ShortByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static char[] convert(short[] array, ShortCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static short[] convert(short[] array, ShortShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static int[] convert(short[] array, ShortIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static long[] convert(short[] array, ShortLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static float[] convert(short[] array, ShortFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static double[] convert(short[] array, ShortDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static Integer[] convert(int[] array, IntGenericMapper<Integer> mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        Integer[] result = new Integer[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static boolean[] convert(int[] array, IntBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static byte[] convert(int[] array, IntByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static char[] convert(int[] array, IntCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static short[] convert(int[] array, IntShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static int[] convert(int[] array, IntIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static long[] convert(int[] array, IntLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static float[] convert(int[] array, IntFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static double[] convert(int[] array, IntDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> T[] convert(long[] array, LongGenericMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        T[] result = new T[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static boolean[] convert(long[] array, LongBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static byte[] convert(long[] array, LongByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static char[] convert(long[] array, LongCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static short[] convert(long[] array, LongShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static int[] convert(long[] array, LongIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static long[] convert(long[] array, LongLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static float[] convert(long[] array, LongFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static double[] convert(long[] array, LongDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> T[] convert(float[] array, FloatGenericMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        T[] result = new T[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static boolean[] convert(float[] array, FloatBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static byte[] convert(float[] array, FloatByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static char[] convert(float[] array, FloatCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static short[] convert(float[] array, FloatShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static int[] convert(float[] array, FloatIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static long[] convert(float[] array, FloatLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static float[] convert(float[] array, FloatFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static double[] convert(float[] array, FloatDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static <T> T[] convert(double[] array, DoubleGenericMapper<T> mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+
+        int length = array.length;
+        T[] result = new T[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static boolean[] convert(double[] array, DoubleBooleanMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        boolean[] result = new boolean[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static byte[] convert(double[] array, DoubleByteMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        byte[] result = new byte[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static char[] convert(double[] array, DoubleCharMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static short[] convert(double[] array, DoubleShortMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        short[] result = new short[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static int[] convert(double[] array, DoubleIntMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static long[] convert(double[] array, DoubleLongMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        long[] result = new long[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static float[] convert(double[] array, DoubleFloatMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        float[] result = new float[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
+    public static double[] convert(double[] array, DoubleDoubleMapper mapper) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        int length = array.length;
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = mapper.map(array[i]);
+        }
+        return result;
+    }
+
     public static <T> T[] concat(T[]... arrays) {
         int[] indexes = indexOf(arrays, new Tester<T>() {
             @Override
@@ -2324,21 +3361,22 @@ public class ContainerCore {
         return false;
     }
 
-    public static <T> List<T> listOf(T... array) {
+    public static <T> ArrayList<T> listOf(T... array) {
         if (isEmpty(array)) {
             return new ArrayList<>();
         }
 
-        return Arrays.asList(array);
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     public static <T> T[] arrayOf(T... array) {
         return array;
     }
 
-    public static <T> List<T> toList(T[] array) {
-        return array == null ? new ArrayList<T>() : new ArrayList<T>(Arrays.asList(array));
+    public static <T> ArrayList<T> toList(T[] array) {
+        return array == null ? null : new ArrayList<>(Arrays.asList(array));
     }
+
 
     public static <T> T[] toArray(Iterable<T> iterable) {
         T t = find(iterable, new Tester<T>() {
@@ -2439,5 +3477,114 @@ public class ContainerCore {
         }
 
         return result;
+    }
+
+    public static ArrayList<Boolean> toList(boolean[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<Boolean> result = new ArrayList<>();
+        for (boolean value : array) {
+            result.add(value);
+        }
+        return result;
+    }
+
+    public static ArrayList<Byte> toList(byte[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<Byte> result = new ArrayList<>();
+        for (byte value : array) {
+            result.add(value);
+        }
+        return result;
+    }
+
+    public static ArrayList<Character> toList(char[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<Character> result = new ArrayList<>();
+        for (char value : array) {
+            result.add(value);
+        }
+        return result;
+    }
+
+    public static ArrayList<Short> toList(short[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<Short> result = new ArrayList<>();
+        for (short value : array) {
+            result.add(value);
+        }
+        return result;
+    }
+
+    public static ArrayList<Integer> toList(int[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int value : array) {
+            result.add(value);
+        }
+        return result;
+    }
+
+    public static ArrayList<Long> toList(long[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<Long> result = new ArrayList<>();
+        for (long value : array) {
+            result.add(value);
+        }
+        return result;
+    }
+
+    public static ArrayList<Float> toList(float[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<Float> result = new ArrayList<>();
+        for (float value : array) {
+            result.add(value);
+        }
+        return result;
+    }
+
+    public static ArrayList<Double> toList(double[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<Double> result = new ArrayList<>();
+        for (double value : array) {
+            result.add(value);
+        }
+        return result;
+    }
+
+    public static <T> T[] toArray(boolean[] iterable) {
+        T t = find(iterable, new Tester<T>() {
+            @Override
+            public boolean test(T t) {
+                return t != null;
+            }
+        });
+        if (t == null) {
+            return null;
+        }
+        return toArray(iterable, (Class<T>) t.getClass());
     }
 }
