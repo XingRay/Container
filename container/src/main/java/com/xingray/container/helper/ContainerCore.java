@@ -1,8 +1,7 @@
 package com.xingray.container.helper;
 
 
-import com.xingray.container.operators.generic.*;
-import com.xingray.container.operators.primary.mapper.*;
+import com.xingray.container.operators.*;
 
 import java.lang.reflect.Array;
 import java.util.*;
@@ -148,6 +147,10 @@ public class ContainerCore {
     }
 
     public static int getSize(char[] array) {
+        return array == null ? 0 : array.length;
+    }
+
+    public static int getSize(short[] array) {
         return array == null ? 0 : array.length;
     }
 
@@ -640,11 +643,11 @@ public class ContainerCore {
         array[j] = tmp;
     }
 
-    public static int getIndexOf(boolean[] array, boolean target) {
-        return getIndexOf(array, target, 0);
+    public static int indexOf(boolean[] array, boolean target) {
+        return indexOf(array, target, 0);
     }
 
-    public static int getIndexOf(boolean[] array, boolean target, int startIndex) {
+    public static int indexOf(boolean[] array, boolean target, int startIndex) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -658,11 +661,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(byte[] array, byte target) {
-        return getIndexOf(array, target, 0);
+    public static int indexOf(byte[] array, byte target) {
+        return indexOf(array, target, 0);
     }
 
-    public static int getIndexOf(byte[] array, byte target, int startIndex) {
+    public static int indexOf(byte[] array, byte target, int startIndex) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -676,11 +679,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(char[] array, char target) {
-        return getIndexOf(array, target, 0);
+    public static int indexOf(char[] array, char target) {
+        return indexOf(array, target, 0);
     }
 
-    public static int getIndexOf(char[] array, char target, int startIndex) {
+    public static int indexOf(char[] array, char target, int startIndex) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -694,11 +697,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(int[] array, int target) {
-        return getIndexOf(array, target, 0);
+    public static int indexOf(int[] array, int target) {
+        return indexOf(array, target, 0);
     }
 
-    public static int getIndexOf(int[] array, int target, int startIndex) {
+    public static int indexOf(int[] array, int target, int startIndex) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -712,11 +715,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(float[] array, float target) {
-        return getIndexOf(array, target, 0);
+    public static int indexOf(float[] array, float target) {
+        return indexOf(array, target, 0);
     }
 
-    public static int getIndexOf(float[] array, float target, int startIndex) {
+    public static int indexOf(float[] array, float target, int startIndex) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -730,11 +733,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(double[] array, double target) {
-        return getIndexOf(array, target, 0);
+    public static int indexOf(double[] array, double target) {
+        return indexOf(array, target, 0);
     }
 
-    public static int getIndexOf(double[] array, double target, int startIndex) {
+    public static int indexOf(double[] array, double target, int startIndex) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -748,11 +751,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(long[] array, long target) {
-        return getIndexOf(array, target, 0);
+    public static int indexOf(long[] array, long target) {
+        return indexOf(array, target, 0);
     }
 
-    public static int getIndexOf(long[] array, long target, int startIndex) {
+    public static int indexOf(long[] array, long target, int startIndex) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -766,11 +769,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <T> int getIndexOf(T[] array, T target) {
-        return getIndexOf(array, target, 0);
+    public static <T> int indexOf(T[] array, T target) {
+        return indexOf(array, target, 0);
     }
 
-    public static <T> int getIndexOf(T[] array, T target, int startIndex) {
+    public static <T> int indexOf(T[] array, T target, int startIndex) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -785,11 +788,11 @@ public class ContainerCore {
     }
 
 
-    public static <T> int getIndexOf(Iterable<T> iterable, T target) {
-        return getIndexOf(iterable, target, 0);
+    public static <T> int indexOf(Iterable<T> iterable, T target) {
+        return indexOf(iterable, target, 0);
     }
 
-    public static <T> int getIndexOf(Iterable<T> iterable, T target, int startIndex) {
+    public static <T> int indexOf(Iterable<T> iterable, T target, int startIndex) {
         if (iterable == null) {
             return -1;
         }
@@ -817,11 +820,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(boolean[] array, Tester<Boolean> tester) {
-        return getIndexOf(array, 0, tester);
+    public static int indexOf(boolean[] array, Tester<Boolean> tester) {
+        return indexOf(array, 0, tester);
     }
 
-    public static int getIndexOf(boolean[] array, int startIndex, Tester<Boolean> tester) {
+    public static int indexOf(boolean[] array, int startIndex, Tester<Boolean> tester) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -834,11 +837,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(byte[] array, Tester<Byte> tester) {
-        return getIndexOf(array, 0, tester);
+    public static int indexOf(byte[] array, Tester<Byte> tester) {
+        return indexOf(array, 0, tester);
     }
 
-    public static int getIndexOf(byte[] array, int startIndex, Tester<Byte> tester) {
+    public static int indexOf(byte[] array, int startIndex, Tester<Byte> tester) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -851,11 +854,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(char[] array, Tester<Character> tester) {
-        return getIndexOf(array, 0, tester);
+    public static int indexOf(char[] array, Tester<Character> tester) {
+        return indexOf(array, 0, tester);
     }
 
-    public static int getIndexOf(char[] array, int startIndex, Tester<Character> tester) {
+    public static int indexOf(char[] array, int startIndex, Tester<Character> tester) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -868,11 +871,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(int[] array, Tester<Integer> tester) {
-        return getIndexOf(array, 0, tester);
+    public static int indexOf(int[] array, Tester<Integer> tester) {
+        return indexOf(array, 0, tester);
     }
 
-    public static int getIndexOf(int[] array, int startIndex, Tester<Integer> tester) {
+    public static int indexOf(int[] array, int startIndex, Tester<Integer> tester) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -885,11 +888,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(long[] array, Tester<Long> tester) {
-        return getIndexOf(array, 0, tester);
+    public static int indexOf(long[] array, Tester<Long> tester) {
+        return indexOf(array, 0, tester);
     }
 
-    public static int getIndexOf(long[] array, int startIndex, Tester<Long> tester) {
+    public static int indexOf(long[] array, int startIndex, Tester<Long> tester) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -902,11 +905,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(float[] array, Tester<Float> tester) {
-        return getIndexOf(array, 0, tester);
+    public static int indexOf(float[] array, Tester<Float> tester) {
+        return indexOf(array, 0, tester);
     }
 
-    public static int getIndexOf(float[] array, int startIndex, Tester<Float> tester) {
+    public static int indexOf(float[] array, int startIndex, Tester<Float> tester) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -919,11 +922,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static int getIndexOf(double[] array, Tester<Double> tester) {
-        return getIndexOf(array, 0, tester);
+    public static int indexOf(double[] array, Tester<Double> tester) {
+        return indexOf(array, 0, tester);
     }
 
-    public static int getIndexOf(double[] array, int startIndex, Tester<Double> tester) {
+    public static int indexOf(double[] array, int startIndex, Tester<Double> tester) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -936,11 +939,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <T> int getIndexOf(T[] array, Tester<T> tester) {
-        return getIndexOf(array, 0, tester);
+    public static <T> int indexOf(T[] array, Tester<T> tester) {
+        return indexOf(array, 0, tester);
     }
 
-    public static <T> int getIndexOf(T[] array, int startIndex, Tester<T> tester) {
+    public static <T> int indexOf(T[] array, int startIndex, Tester<T> tester) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -953,11 +956,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <T> int getIndexOf(Iterable<T> iterable, Tester<T> tester) {
-        return getIndexOf(iterable, 0, tester);
+    public static <T> int indexOf(Iterable<T> iterable, Tester<T> tester) {
+        return indexOf(iterable, 0, tester);
     }
 
-    public static <T> int getIndexOf(Iterable<T> iterable, int startIndex, Tester<T> tester) {
+    public static <T> int indexOf(Iterable<T> iterable, int startIndex, Tester<T> tester) {
         if (isOutOfIndex(iterable, startIndex)) {
             return -1;
         }
@@ -984,11 +987,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <V> int getIndexOf(boolean[] array, V target, IndexTester<V> matcher) {
-        return getIndexOf(array, 0, target, matcher);
+    public static <V> int indexOf(boolean[] array, V target, IndexTester<V> matcher) {
+        return indexOf(array, 0, target, matcher);
     }
 
-    public static <V> int getIndexOf(boolean[] array, int startIndex, V target, IndexTester<V> matcher) {
+    public static <V> int indexOf(boolean[] array, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -1002,11 +1005,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <V> int getIndexOf(byte[] array, V target, IndexTester<V> matcher) {
-        return getIndexOf(array, 0, target, matcher);
+    public static <V> int indexOf(byte[] array, V target, IndexTester<V> matcher) {
+        return indexOf(array, 0, target, matcher);
     }
 
-    public static <V> int getIndexOf(byte[] array, int startIndex, V target, IndexTester<V> matcher) {
+    public static <V> int indexOf(byte[] array, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -1020,11 +1023,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <V> int getIndexOf(char[] array, V target, IndexTester<V> matcher) {
-        return getIndexOf(array, 0, target, matcher);
+    public static <V> int indexOf(char[] array, V target, IndexTester<V> matcher) {
+        return indexOf(array, 0, target, matcher);
     }
 
-    public static <V> int getIndexOf(char[] array, int startIndex, V target, IndexTester<V> matcher) {
+    public static <V> int indexOf(char[] array, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -1038,11 +1041,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <V> int getIndexOf(int[] array, V target, IndexTester<V> matcher) {
-        return getIndexOf(array, 0, target, matcher);
+    public static <V> int indexOf(int[] array, V target, IndexTester<V> matcher) {
+        return indexOf(array, 0, target, matcher);
     }
 
-    public static <V> int getIndexOf(int[] array, int startIndex, V target, IndexTester<V> matcher) {
+    public static <V> int indexOf(int[] array, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -1056,11 +1059,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <V> int getIndexOf(long[] array, V target, IndexTester<V> matcher) {
-        return getIndexOf(array, 0, target, matcher);
+    public static <V> int indexOf(long[] array, V target, IndexTester<V> matcher) {
+        return indexOf(array, 0, target, matcher);
     }
 
-    public static <V> int getIndexOf(long[] array, int startIndex, V target, IndexTester<V> matcher) {
+    public static <V> int indexOf(long[] array, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -1074,11 +1077,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <V> int getIndexOf(float[] array, V target, IndexTester<V> matcher) {
-        return getIndexOf(array, 0, target, matcher);
+    public static <V> int indexOf(float[] array, V target, IndexTester<V> matcher) {
+        return indexOf(array, 0, target, matcher);
     }
 
-    public static <V> int getIndexOf(float[] array, int startIndex, V target, IndexTester<V> matcher) {
+    public static <V> int indexOf(float[] array, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -1092,11 +1095,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <V> int getIndexOf(double[] array, V target, IndexTester<V> matcher) {
-        return getIndexOf(array, 0, target, matcher);
+    public static <V> int indexOf(double[] array, V target, IndexTester<V> matcher) {
+        return indexOf(array, 0, target, matcher);
     }
 
-    public static <V> int getIndexOf(double[] array, int startIndex, V target, IndexTester<V> matcher) {
+    public static <V> int indexOf(double[] array, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -1110,11 +1113,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <T, V> int getIndexOf(T[] array, V target, IndexTester<V> matcher) {
-        return getIndexOf(array, 0, target, matcher);
+    public static <T, V> int indexOf(T[] array, V target, IndexTester<V> matcher) {
+        return indexOf(array, 0, target, matcher);
     }
 
-    public static <T, V> int getIndexOf(T[] array, int startIndex, V target, IndexTester<V> matcher) {
+    public static <T, V> int indexOf(T[] array, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(array, startIndex)) {
             return -1;
         }
@@ -1128,11 +1131,11 @@ public class ContainerCore {
         return -1;
     }
 
-    public static <T, V> int getIndexOf(Iterable<T> iterable, V target, IndexTester<V> matcher) {
-        return getIndexOf(iterable, 0, target, matcher);
+    public static <T, V> int indexOf(Iterable<T> iterable, V target, IndexTester<V> matcher) {
+        return indexOf(iterable, 0, target, matcher);
     }
 
-    public static <T, V> int getIndexOf(Iterable<T> iterable, int startIndex, V target, IndexTester<V> matcher) {
+    public static <T, V> int indexOf(Iterable<T> iterable, int startIndex, V target, IndexTester<V> matcher) {
         if (isOutOfIndex(iterable, startIndex)) {
             return -1;
         }
@@ -1931,24 +1934,23 @@ public class ContainerCore {
         return list;
     }
 
-    public static <T> void traversal(Collection<T> collection, IndexProcessor<T> indexProcessor) {
-        if (isEmpty(collection)) {
+    public static <T> void traversal(T[] array, IndexProcessor<T> processor) {
+        if (isEmpty(array)) {
             return;
         }
-
         int index = -1;
-        for (T t : collection) {
+        for (T t : array) {
             index++;
-            indexProcessor.process(index, t);
+            processor.process(index, t);
         }
     }
 
-    public static <T> void traversal(List<T> list, IndexProcessor<T> indexProcessor) {
-        if (isEmpty(list)) {
+    public static <T> void traversal(Iterable<T> iterable, IndexProcessor<T> indexProcessor) {
+        if (isEmpty(iterable)) {
             return;
         }
         int index = -1;
-        for (T t : list) {
+        for (T t : iterable) {
             index++;
             indexProcessor.process(index, t);
         }
@@ -1967,6 +1969,17 @@ public class ContainerCore {
         for (int i = 0, size = nodeHandler.getChildCount(root); i < size; i++) {
             T t = nodeHandler.getChildAt(root, i);
             traversal(t, nodeHandler, processor);
+        }
+    }
+
+    public static <T, K> void traversal(Map<K, T> map, IndexProcessor<T> processor) {
+        if (isEmpty(map)) {
+            return;
+        }
+        int index = -1;
+        for (T t : map.values()) {
+            index++;
+            processor.process(index, t);
         }
     }
 
@@ -2239,1047 +2252,6 @@ public class ContainerCore {
             T t = srcArray[i];
             dstArray[i] = indexMapper.map(t, i);
         }
-    }
-
-    public static <T> boolean[] convert(T[] array, GenericBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> byte[] convert(T[] array, GenericByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> char[] convert(T[] array, GenericCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> short[] convert(T[] array, GenericShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> int[] convert(T[] array, GenericIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> long[] convert(T[] array, GenericLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> float[] convert(T[] array, GenericFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> double[] convert(T[] array, GenericDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> T[] convert(boolean[] array, BooleanGenericMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        T[] result = new T[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static boolean[] convert(boolean[] array, BooleanBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static byte[] convert(boolean[] array, BooleanByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static char[] convert(boolean[] array, BooleanCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static short[] convert(boolean[] array, BooleanShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static int[] convert(boolean[] array, BooleanIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static long[] convert(boolean[] array, BooleanLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static float[] convert(boolean[] array, BooleanFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static double[] convert(boolean[] array, BooleanDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> T[] convert(byte[] array, ByteGenericMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        T[] result = new T[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static boolean[] convert(byte[] array, ByteBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static byte[] convert(byte[] array, ByteByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static char[] convert(byte[] array, ByteCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static short[] convert(byte[] array, ByteShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static int[] convert(byte[] array, ByteIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static long[] convert(byte[] array, ByteLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static float[] convert(byte[] array, ByteFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static double[] convert(byte[] array, ByteDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> T[] convert(char[] array, CharGenericMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        T[] result = new T[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static boolean[] convert(char[] array, CharBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static byte[] convert(char[] array, CharByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static char[] convert(char[] array, CharCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static short[] convert(char[] array, CharShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static int[] convert(char[] array, CharIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static long[] convert(char[] array, CharLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static float[] convert(char[] array, CharFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static double[] convert(char[] array, CharDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> T[] convert(short[] array, ShortGenericMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        T[] result = new T[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static boolean[] convert(short[] array, ShortBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static byte[] convert(short[] array, ShortByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static char[] convert(short[] array, ShortCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static short[] convert(short[] array, ShortShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static int[] convert(short[] array, ShortIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static long[] convert(short[] array, ShortLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static float[] convert(short[] array, ShortFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static double[] convert(short[] array, ShortDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static Integer[] convert(int[] array, IntGenericMapper<Integer> mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        Integer[] result = new Integer[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static boolean[] convert(int[] array, IntBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static byte[] convert(int[] array, IntByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static char[] convert(int[] array, IntCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static short[] convert(int[] array, IntShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static int[] convert(int[] array, IntIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static long[] convert(int[] array, IntLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static float[] convert(int[] array, IntFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static double[] convert(int[] array, IntDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> T[] convert(long[] array, LongGenericMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        T[] result = new T[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static boolean[] convert(long[] array, LongBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static byte[] convert(long[] array, LongByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static char[] convert(long[] array, LongCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static short[] convert(long[] array, LongShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static int[] convert(long[] array, LongIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static long[] convert(long[] array, LongLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static float[] convert(long[] array, LongFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static double[] convert(long[] array, LongDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> T[] convert(float[] array, FloatGenericMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        T[] result = new T[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static boolean[] convert(float[] array, FloatBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static byte[] convert(float[] array, FloatByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static char[] convert(float[] array, FloatCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static short[] convert(float[] array, FloatShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static int[] convert(float[] array, FloatIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static long[] convert(float[] array, FloatLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static float[] convert(float[] array, FloatFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static double[] convert(float[] array, FloatDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static <T> T[] convert(double[] array, DoubleGenericMapper<T> mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-
-        int length = array.length;
-        T[] result = new T[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static boolean[] convert(double[] array, DoubleBooleanMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        boolean[] result = new boolean[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static byte[] convert(double[] array, DoubleByteMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        byte[] result = new byte[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static char[] convert(double[] array, DoubleCharMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        char[] result = new char[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static short[] convert(double[] array, DoubleShortMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        short[] result = new short[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static int[] convert(double[] array, DoubleIntMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static long[] convert(double[] array, DoubleLongMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        long[] result = new long[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static float[] convert(double[] array, DoubleFloatMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        float[] result = new float[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
-    }
-
-    public static double[] convert(double[] array, DoubleDoubleMapper mapper) {
-        if (isEmpty(array)) {
-            return null;
-        }
-
-        int length = array.length;
-        double[] result = new double[length];
-        for (int i = 0; i < length; i++) {
-            result[i] = mapper.map(array[i]);
-        }
-        return result;
     }
 
     public static <T> T[] concat(T[]... arrays) {
@@ -3575,16 +2547,139 @@ public class ContainerCore {
         return result;
     }
 
-    public static <T> T[] toArray(boolean[] iterable) {
-        T t = find(iterable, new Tester<T>() {
-            @Override
-            public boolean test(T t) {
-                return t != null;
-            }
-        });
-        if (t == null) {
+    public static <K, T> T[] toArray(Map<K, T> map) {
+        return null;
+    }
+
+    public static <T> T[] clone(T[] array) {
+        return null;
+    }
+
+    public static <T> ArrayList<T> toList(Iterable<T> iterator) {
+        return null;
+    }
+
+    public static <T, K> HashMap<K, T> toMap(T[] array) {
+        return null;
+    }
+
+    public static Boolean[] toBoxArray(boolean[] array) {
+        if (isEmpty(array)) {
             return null;
         }
-        return toArray(iterable, (Class<T>) t.getClass());
+        Boolean[] result = new Boolean[getSize(array)];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    public static Byte[] toBoxArray(byte[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        Byte[] result = new Byte[getSize(array)];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    public static Character[] toBoxArray(char[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        Character[] result = new Character[getSize(array)];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    public static Short[] toBoxArray(short[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        Short[] result = new Short[getSize(array)];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    public static Integer[] toBoxArray(int[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        Integer[] result = new Integer[getSize(array)];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    public static Long[] toBoxArray(long[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        Long[] result = new Long[getSize(array)];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    public static Float[] toBoxArray(float[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        Float[] result = new Float[getSize(array)];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    public static Double[] toBoxArray(double[] array) {
+        if (isEmpty(array)) {
+            return null;
+        }
+        Double[] result = new Double[getSize(array)];
+        for (int i = 0, arrayLength = array.length; i < arrayLength; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+    public static <K, T> HashMap<K, T> toMap(Iterable<T> iterator) {
+        return null;
+    }
+
+    public static <T, K> ArrayList<T> toList(Map<K, T> map) {
+        return null;
+    }
+
+    public static <K, T> HashMap<K, T> toMap(Map<K, T> map) {
+        return null;
+    }
+
+    public static <T> HashSet<T> toSet(T[] array) {
+        return null;
+    }
+
+    public static <T> HashSet<T> toSet(Iterable<T> iterator) {
+        return null;
+    }
+
+    public static <T, K> HashSet<T> toSet(Map<K, T> map) {
+        return null;
+    }
+
+    public static <T> boolean contains(Iterable<T> iterator, Iterable<T> iterable) {
+        return false;
+    }
+
+    public static <K, T> T find(Map<K, T> map, int startIndex, Tester<T> tester) {
+        return null;
     }
 }

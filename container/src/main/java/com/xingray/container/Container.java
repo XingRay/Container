@@ -1,9 +1,10 @@
 package com.xingray.container;
 
-import com.xingray.container.operators.generic.CloneFactory;
-import com.xingray.container.operators.generic.Mapper;
-import com.xingray.container.operators.generic.Processor;
-import com.xingray.container.operators.generic.Tester;
+import com.xingray.container.helper.ContainerCore;
+import com.xingray.container.operators.CloneFactory;
+import com.xingray.container.operators.IndexProcessor;
+import com.xingray.container.operators.Mapper;
+import com.xingray.container.operators.Tester;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,187 +18,152 @@ import java.util.Map;
  * Version     : 0.0.1
  * <p>
  * Description : Container
- * todo
  */
-public abstract class Container<T> {
+public interface Container<K, T> {
 
-    Object mContainer;
-    int mContainerType;
-
-    protected Container(Object container, int containerType) {
-        mContainer = container;
-        mContainerType = containerType;
+    static <T> Container<Integer, T> ofArray(T[] array) {
+        return new ArrayContainer<>(array);
     }
 
-    static <T> Container<T> ofArray(T[] array) {
-        return new GenericContainer<>(array, ContainerType.ARRAY);
+    static Container<Integer, Boolean> ofArray(boolean[] array) {
+        return new ArrayContainer<>(ContainerCore.toBoxArray(array));
     }
 
-    static Container ofArray(boolean[] array) {
-        return new BooleanContainer(array, ContainerType.ARRAY);
+    static Container<Integer, Byte> ofArray(byte[] array) {
+        return new ArrayContainer<>(ContainerCore.toBoxArray(array));
     }
 
-    static Container ofArray(byte[] array) {
-        return new ByteContainer(array, ContainerType.ARRAY);
+    static Container<Integer, Character> ofArray(char[] array) {
+        return new ArrayContainer<>(ContainerCore.toBoxArray(array));
     }
 
-    static Container ofArray(char[] array) {
-        return new CharContainer(array, ContainerType.ARRAY);
+    static Container<Integer, Short> ofArray(short[] array) {
+        return new ArrayContainer<>(ContainerCore.toBoxArray(array));
     }
 
-    static Container ofArray(short[] array) {
-        return new ShortContainer(array, ContainerType.ARRAY);
+    static Container<Integer, Integer> ofArray(int[] array) {
+        return new ArrayContainer<>(ContainerCore.toBoxArray(array));
     }
 
-    static Container ofArray(int[] array) {
-        return new IntContainer(array, ContainerType.ARRAY);
+    static Container<Integer, Long> ofArray(long[] array) {
+        return new ArrayContainer<>(ContainerCore.toBoxArray(array));
     }
 
-    static Container ofArray(long[] array) {
-        return new LongContainer(array, ContainerType.ARRAY);
+    static Container<Integer, Float> ofArray(float[] array) {
+        return new ArrayContainer<>(ContainerCore.toBoxArray(array));
     }
 
-    static Container ofArray(float[] array) {
-        return new FloatContainer(array, ContainerType.ARRAY);
+    static Container<Integer, Double> ofArray(double[] array) {
+        return new ArrayContainer<>(ContainerCore.toBoxArray(array));
     }
 
-    static Container ofArray(double[] array) {
-        return new DoubleContainer(array, ContainerType.ARRAY);
-    }
-
-    static <T> Container<T> of(T... array) {
+    static <T> Container<Integer, T> of(T... array) {
         return ofArray(array);
     }
 
-    static Container of(boolean... array) {
+    static Container<Integer, Boolean> of(boolean... array) {
         return ofArray(array);
     }
 
-    static Container of(byte... array) {
+    static Container<Integer, Byte> of(byte... array) {
         return ofArray(array);
     }
 
-    static Container of(char... array) {
+    static Container<Integer, Character> of(char... array) {
         return ofArray(array);
     }
 
-    static Container of(short... array) {
+    static Container<Integer, Short> of(short... array) {
         return ofArray(array);
     }
 
-    static Container of(int... array) {
+    static Container<Integer, Integer> of(int... array) {
         return ofArray(array);
     }
 
-    static Container of(long... array) {
+    static Container<Integer, Long> of(long... array) {
         return ofArray(array);
     }
 
-    static Container of(float... array) {
+    static Container<Integer, Float> of(float... array) {
         return ofArray(array);
     }
 
-    static Container of(double... array) {
+    static Container<Integer, Double> of(double... array) {
         return ofArray(array);
     }
 
-    public static <T> Container<T> of(Iterable<T> iterable) {
-        return new GenericContainer<>(iterable, ContainerType.ITERABLE);
+    static <T> Container<Integer, T> of(Iterable<T> iterable) {
+        return new IterableContainer<>(iterable);
     }
 
-    public static <T> Container<T> of(Map<?, T> map) {
-        return new GenericContainer<>(map, ContainerType.MAP);
+    static <K, T> Container<K, T> of(Map<K, T> map) {
+        return new MapContainer<>(map);
     }
 
-    public static <T> Container<T> of(Container<T> container) {
+    static <K, T> Container<K, T> of(Container<K, T> container) {
         return container.clone();
     }
 
-    public abstract T[] asArray();
+    T[] asArray();
 
-    public abstract boolean[] asBooleanArray();
+    ArrayList<T> asList();
 
-    public abstract byte[] asByteArray();
+    HashMap<K, T> asMap();
 
-    public abstract short[] asShortArray();
+    HashSet<T> asSet();
 
-    public abstract int[] asIntArray();
+    boolean isEmpty();
 
-    public abstract long[] asLongArray();
+    boolean hasElement();
 
-    public abstract float[] asFloatArray();
+    int getSize();
 
-    public abstract double[] asDoubleArray();
+    boolean isValidIndex(int index);
 
-    public abstract ArrayList<T> asList();
+    boolean isOutOfIndex(int index);
 
-    public abstract <K> HashMap<K, T> asMap();
+    boolean hasElementBy(K key);
 
-    public abstract HashSet<T> asSet();
+    boolean hasElementAt(int index);
 
-    public abstract boolean isEmpty();
+    T safetyGet(int index);
 
-    public abstract boolean hasElement();
+    boolean contains(Container<K, T> container);
 
-    public abstract int getSize();
+    boolean equals(Container<K, T> container);
 
-    public abstract boolean isValidIndex(int index);
+    int indexOf(T t);
 
-    public abstract boolean isOutOfIndex(int index);
+    int indexOf(int startIndex, T t);
 
-    public abstract <K> boolean hasElementBy(K key);
+    T find(Tester<T> tester);
 
-    public abstract boolean hasElementAt(int index);
+    T find(int startIndex, Tester<T> tester);
 
-    public abstract boolean contains(Container<T> container);
+    Container<K, T> filter(Tester<T> tester);
 
-    public abstract T safetyGet(int index);
+    Container<K, T> move(int fromIndex, int toIndex);
 
-    public abstract boolean equals(Container<?> container);
+    Container<K, T> distinct();
 
-    public int indexOf(T t) {
-        return indexOf(t, 0);
-    }
+    <K> Container<K, T> distinct(Mapper<T, K> mapper);
 
-    public abstract int indexOf(T t, int startIndex);
+    Container<K, T> merge(Container<K, T> container);
 
-    public T find(Tester<T> tester) {
-        return find(0, tester);
-    }
+    Container<K, T> intersection(Container<K, T> container);
 
-    public abstract T find(int startIndex, Tester<T> tester);
+    Container<K, T> diff(Container<K, T> container);
 
-    public Container<T> findAll(Tester<T> tester) {
-        return findAll(0, tester);
-    }
+    Container<K, T> traversal(IndexProcessor<T> processor);
 
-    public abstract Container<T> findAll(int startIndex, Tester<T> tester);
+    <K> Container<K, K> convert(Mapper<T, K> mapper);
 
-    public abstract Container<T> filter(Tester<T> tester);
+    Container<K, T> clone();
 
-    public abstract Container<T> move(int fromIndex, int toIndex);
+    Container<K, T> deepClone(CloneFactory<T> factory);
 
-    public Container<T> distinct() {
-        return distinct(null);
-    }
+    Container<K, T> concat(Container<K, T> container);
 
-    public abstract <K> Container<T> distinct(Mapper<T, K> mapper);
-
-    public abstract Container<T> merge(Container<T> container);
-
-    public abstract Container<T> intersection(Container<T> container);
-
-    public abstract Container<T> diff(Container<T> container);
-
-    public abstract Container<T> traversal(Processor<T> processor);
-
-    public abstract <K> Container<K> convert(Mapper<T, K> mapper);
-
-    public abstract Container<T> clone();
-
-    public abstract Container<T> deepClone(CloneFactory<T> factory);
-
-    public abstract Container<T> concat(Container<T> container);
-
-    public abstract Container<T> swap(int x, int y);
+    Container<K, T> swap(int x, int y);
 }

@@ -27,4 +27,17 @@ public class ContainerCoreTest {
         assert strings.get(0).equals("aaa");
         assert strings.get(1).equals("cc");
     }
+
+    @Test
+    public void objectArrayTest() {
+        Object[] objects = new Integer[]{1, 2, 3, 4, 5};
+        Integer[] integers = (Integer[]) objects;
+        Integer[] result = Container.of(integers)
+                .filter(integer -> integer < 4)
+                .traversal(System.out::print)
+                .asArray();
+        assert result[0] == 1;
+        assert result[1] == 2;
+        assert result[2] == 3;
+    }
 }
