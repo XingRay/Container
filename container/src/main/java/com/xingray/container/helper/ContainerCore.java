@@ -1436,6 +1436,21 @@ public class ContainerCore {
         }
     }
 
+    public static <T> T[] filter(T[] array, Tester<T> tester) {
+        if (isEmpty(array)) {
+            return null;
+        }
+
+        ArrayList<T> list = new ArrayList<>();
+        for (T t : array) {
+            if (tester.test(t)) {
+                list.add(t);
+            }
+        }
+
+        return (T[]) list.toArray();
+    }
+
     public static <T> void move(List<T> list, int fromIndex, int toIndex) {
         if (isOutOfIndex(list, fromIndex)) {
             return;
@@ -2552,7 +2567,45 @@ public class ContainerCore {
     }
 
     public static <T> T[] clone(T[] array) {
-        return null;
+        if (array == null) {
+            return null;
+        }
+        if (array.length == 0) {
+            return array;
+        }
+
+        Class<T> cls = null;
+        for (T t : array) {
+            if (t == null) {
+                continue;
+            }
+            cls = (Class<T>) t.getClass();
+            break;
+        }
+        if (cls == null) {
+            return null;
+        }
+
+        return cloneArray(array, cls);
+    }
+
+    public static <T> T[] clone(T[] array, Class<T> cls) {
+        if (array == null) {
+            return null;
+        }
+        if (array.length == 0) {
+            return array;
+        }
+        if (cls == null) {
+            return null;
+        }
+        return cloneArray(array, cls);
+    }
+
+    private static <T> T[] cloneArray(T[] array, Class<T> cls) {
+        T[] dest = (T[]) Array.newInstance(cls, array.length);
+        System.arraycopy(array, 0, dest, 0, array.length);
+        return dest;
     }
 
     public static <T> ArrayList<T> toList(Iterable<T> iterator) {

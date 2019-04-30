@@ -1,7 +1,10 @@
 package com.xingray.container;
 
 import com.xingray.container.helper.ContainerCore;
-import com.xingray.container.operators.*;
+import com.xingray.container.operators.CloneFactory;
+import com.xingray.container.operators.IndexProcessor;
+import com.xingray.container.operators.Mapper;
+import com.xingray.container.operators.Tester;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -106,7 +109,8 @@ public class ArrayContainer<T> implements Container<Integer, T> {
 
     @Override
     public Container<Integer, T> filter(Tester<T> tester) {
-        return null;
+        array = ContainerCore.filter(array, tester);
+        return this;
     }
 
     @Override

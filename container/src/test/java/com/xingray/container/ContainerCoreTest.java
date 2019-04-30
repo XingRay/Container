@@ -34,7 +34,7 @@ public class ContainerCoreTest {
         Integer[] integers = (Integer[]) objects;
         Integer[] result = Container.of(integers)
                 .filter(integer -> integer < 4)
-                .traversal(System.out::print)
+                .traversal((index, integer) -> System.out.println(integer))
                 .asArray();
         assert result[0] == 1;
         assert result[1] == 2;

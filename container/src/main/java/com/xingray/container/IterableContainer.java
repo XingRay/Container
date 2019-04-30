@@ -4,6 +4,7 @@ import com.xingray.container.helper.ContainerCore;
 import com.xingray.container.operators.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -106,7 +107,8 @@ public class IterableContainer<T> implements Container<Integer, T> {
 
     @Override
     public Container<Integer, T> filter(Tester<T> tester) {
-        return null;
+        ContainerCore.filter(iterable, tester);
+        return this;
     }
 
     @Override
